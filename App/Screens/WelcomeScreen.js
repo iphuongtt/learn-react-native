@@ -19,6 +19,13 @@ class WelcomeScreen extends React.Component {
     return {
       // title: `Welcom ${navigation.getParam('name', 'You')}`,
       headerTitle: () => <LogoTitle />,
+      headerRight: () => (
+        <Button
+          onPress={() => alert('This is a button!')}
+          title="Info"
+          color="#000"
+        />
+      ),
       headerStyle: {
         backgroundColor: '#006400',
       },
