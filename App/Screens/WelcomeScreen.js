@@ -51,6 +51,10 @@ class WelcomeScreen extends React.Component {
         title="Go Back"
         onPress={() => this.props.navigation.goBack()}
       />
+      <Button
+        title="Toggle drawer navigation"
+        onPress={() => this.props.navigation.toggleDrawer()}
+      />
     </View>
   }
 }
