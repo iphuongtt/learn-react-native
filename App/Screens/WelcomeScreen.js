@@ -22,7 +22,7 @@ class WelcomeScreen extends React.Component {
       headerRight: () => (
         <Button
           //onPress={() => alert('This is a button!')}
-          onPress={() => navigation.navigate('Modal')}
+          onPress={() => navigation.navigate('Root_Modal')}
           title="Info"
           color="#000"
         />
@@ -41,11 +41,11 @@ class WelcomeScreen extends React.Component {
       <Text style={{fontSize: 30}}>{`Welcome ${this.props.navigation.getParam('name', 'You')}`} </Text>
       <Button
         title="Go to welcome again"
-        onPress={() => this.props.navigation.push('Welcome')}
+        onPress={() => this.props.navigation.push('Main_Welcome')}
       />
       <Button
         title="Go to Home"
-        onPress={() => this.props.navigation.navigate('Home')}
+        onPress={() => this.props.navigation.navigate('Main_Home')}
       />
       <Button
         title="Go Back"
