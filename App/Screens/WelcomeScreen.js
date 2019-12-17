@@ -21,7 +21,8 @@ class WelcomeScreen extends React.Component {
       headerTitle: () => <LogoTitle />,
       headerRight: () => (
         <Button
-          onPress={() => alert('This is a button!')}
+          //onPress={() => alert('This is a button!')}
+          onPress={() => navigation.navigate('Modal')}
           title="Info"
           color="#000"
         />
