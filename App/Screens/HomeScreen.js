@@ -6,7 +6,7 @@ const HomeScreen = (props) => {
     <Text style={{fontSize: 30}}>This is home screen </Text>
     <Button
       title="Go to Welcome screen"
-      onPress={() => props.navigation.navigate('Welcome')}
+      onPress={() => props.navigation.navigate('Welcome', {name: 'Neo'})}
     />
   </View>
 }
