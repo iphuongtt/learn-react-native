@@ -3,11 +3,15 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
+import { Transition } from 'react-native-reanimated';
 import { StyleSheet, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './Screens/HomeScreen';
 import WelcomeScreen from './Screens/WelcomeScreen';
 import ModalScreen from './Screens/ModalScreen';
+import SignInScreen from './Screens/SignInScreen';
+import AuthLoadingScreen from './Screens/AuthLoadingScreen';
 import TabWelcome from './Screens/TabWelcome';
 import IconWithBadge from './Components/IconWithBadge';
 
@@ -119,6 +123,29 @@ const styles = StyleSheet.create({
   },
 })
 
-const App = createAppContainer(DrawerStack);
+const AuthStack = createStackNavigator({
+  SignIn: SignInScreen,
+})
+
+const App = createAppContainer(createAnimatedSwitchNavigator(
+  {
+    App: DrawerStack,
+    Auth: AuthStack,
+    AuthLoading: AuthLoadingScreen,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+    transition: (
+      <Transition.Together>
+        <Transition.Out
+          type="slide-bottom"
+          durationMs={400}
+          interpolation="easeIn"
+        />
+        <Transition.In type="fade" durationMs={500} />
+      </Transition.Together>
+    )
+  }
+));
 
 export default App;
