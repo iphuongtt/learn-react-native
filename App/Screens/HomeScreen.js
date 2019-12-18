@@ -4,6 +4,8 @@ import {
   Text,
   Button,
   StyleSheet,
+  StatusBar,
+  SafeAreaView,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -14,7 +16,8 @@ const HomeScreen = (props) => {
     props.navigation.navigate('Auth');
   }
 
-  return <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+  return <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#6a51ae'}}>
+    <StatusBar barStyle="light-content" backgroundColor='#6a51ae'/>
     <Text style={{fontSize: 30}}>This is home screen </Text>
     <Button
       title="Go to Welcome screen"
@@ -29,7 +32,7 @@ const HomeScreen = (props) => {
       title="Sign out"
       onPress={_signOutAsync}
     />
-  </View>
+  </SafeAreaView>
 }
 
 const styles = StyleSheet.create({

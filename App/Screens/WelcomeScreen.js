@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, Button, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  Image,
+  StatusBar,
+  SafeAreaView,
+} from 'react-native';
 const logoImage = require('../Assets/Images/tree.png')
 
 const LogoTitle = () => {
@@ -37,7 +44,8 @@ class WelcomeScreen extends React.Component {
     }
   }
   render() {
-    return <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    return <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#006400'}}>
+      <StatusBar barStyle='dark-content' backgroundColor='#006400' />
       <Text style={{fontSize: 30}}>{`Welcome ${this.props.navigation.getParam('name', 'You')}`} </Text>
       <Button
         title="Go to welcome again"
@@ -55,7 +63,7 @@ class WelcomeScreen extends React.Component {
         title="Toggle drawer navigation"
         onPress={() => this.props.navigation.toggleDrawer()}
       />
-    </View>
+    </SafeAreaView>
   }
 }
 
