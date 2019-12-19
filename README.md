@@ -34,6 +34,7 @@ Step by step to master React Native
   * On Android:
     * Run `npx react-native run-android`
   * On iOS:
+    * cd ios && pod install
     * Run `npx react-native run-ios`
 14. Enjoy!!!
 
