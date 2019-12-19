@@ -11,6 +11,7 @@ import HomeScreen from './Screens/HomeScreen';
 import WelcomeScreen from './Screens/WelcomeScreen';
 import ModalScreen from './Screens/ModalScreen';
 import SignInScreen from './Screens/SignInScreen';
+import SignUpScreen from './Screens/SignUpScreen';
 import AuthLoadingScreen from './Screens/AuthLoadingScreen';
 import TabWelcome from './Screens/TabWelcome';
 import IconWithBadge from './Components/IconWithBadge';
@@ -124,7 +125,18 @@ const styles = StyleSheet.create({
 })
 
 const AuthStack = createStackNavigator({
-  SignIn: SignInScreen,
+  SignIn: {
+    screen: SignInScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  SignUp: {
+    screen: SignUpScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
 })
 
 const App = createAppContainer(createAnimatedSwitchNavigator(

@@ -23,7 +23,7 @@ const SignInScreen = (props) => {
 
   const { navigation } = props;
   //const gotoSignup = useCallBack(() => {navigation.navigate('App')}, []);
-  const gotoSignup = () => {navigation.navigate('App')};
+  const gotoSignup = () => {navigation.navigate('SignUp')};
   const _signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'abc');
     console.log('test')
@@ -71,6 +71,7 @@ const SignInScreen = (props) => {
               autoCapitalize="none"
               iconName="md-mail"
               iconColor="#2C384A"
+              keyboardType="email-address"
             />
             <ErrorMessage errorValue={touched.email && errors.email} />
 

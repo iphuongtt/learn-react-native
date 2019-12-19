@@ -24,6 +24,7 @@ const FormInput = ({
         value={value}
         placeholder={placeholder}
         style={styles.input}
+        keyboardType={keyboardType}
       />
     </View>
   )
