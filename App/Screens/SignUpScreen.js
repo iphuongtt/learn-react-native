@@ -8,8 +8,14 @@ import {
   ScrollView,
   StatusBar,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput,
+  Picker
 } from 'react-native';
+import {
+  ListItem
+} from 'react-native-elements';
+import { Container, Item, Input, Icon } from 'native-base';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,6 +23,8 @@ import FormInput from '../Components/FormInput';
 import FormButton from '../Components/FormButton';
 import ErrorMessage from '../Components/ErrorMessage';
 import FormCheckBox from '../Components/FormCheckBox';
+import FormDropDown from '../Components/FormDropDown';
+import DropDownModal from '../Components/DropDownModal';
 
 const screenWith = Dimensions.get('window').width;
 const logoImg = require('../Assets/Images/logo.png');
@@ -26,7 +34,8 @@ const initialValues = {
   name: '',
   password: '',
   confirmPassword: '',
-  agree: false
+  agree: false,
+  city: ''
 }
 const validationSchema = yup.object().shape({
   email: yup
@@ -50,8 +59,30 @@ const validationSchema = yup.object().shape({
     .required('Confirm Password is required'),
   agree: yup
     .boolean()
-    .oneOf([true], 'Please check the agreement')
+    .oneOf([true], 'Please check the agreement'),
+  city: yup
+    .string()
+    .required('City is required')
 })
+
+let index = 0;
+const data = [
+    { key: index++, section: true, label: 'Ha Noi' },
+    { key: index++, label: 'Hai Phong' },
+    { key: index++, label: 'Hai Duong' },
+    { key: index++, label: 'Nam Dinh' },
+    { key: index++, label: 'Dong Thap' },
+    { key: index++, label: 'Can Tho' },
+    { key: index++, section: true, label: 'Tra Vinh' },
+    { key: index++, label: 'Soc Trang' },
+    { key: index++, label: 'Long An' },
+    { key: index++, label: 'Ninh Binh' },
+    { key: index++, label: 'Thanh Hoa' },
+    { key: index++, label: 'Nghe An' },
+    { key: index++, label: 'Lang Son' },
+    { key: index++, label: 'Yen Bai' },
+    { key: index++, label: 'Hoa Binh' }
+];
 
 const SignUpScreen = (props) => {
   const [rightIconPassword, setRightIconPassword] = useState(`${iconPrefix}eye-off`);
@@ -76,8 +107,8 @@ const SignUpScreen = (props) => {
   }
 
   return (
-    <ScrollView keyboardDismissMode='on-drag' style={{flex: 1, backgroundColor: '#d3d3d3'}}>
-      <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#d3d3d3' }}>
+    <ScrollView keyboardDismissMode='on-drag' style={{flex: 1, backgroundColor: 'mintcream'}}>
+      <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: 'mintcream' }}>
         <StatusBar barStyle="light-content" backgroundColor='#d3d3d3'/>
         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'center' }}>
           <Image
@@ -160,16 +191,36 @@ const SignUpScreen = (props) => {
                 errorMessage={touched.confirmPassword && errors.confirmPassword}
               />
 
+              <DropDownModal
+                data={data}
+                initValue="Select something yummy!"
+                cancelText="Close"
+                onChange={(city) => setFieldValue('city', city.label)}
+              >
+                <FormInput
+                  name="city"
+                  value={values.city}
+                  placeholder="Select your city"
+                  iconName={`${iconPrefix}home`}
+                  iconColor="#2C384A"
+                  disabled={true}
+                  rightIcon={
+                    <Ionicons name={`${iconPrefix}arrow-dropdown`} size={28} color='grey' />
+                  }
+                  errorMessage={touched.city && errors.city}
+                />
+              </DropDownModal>
+
               <FormCheckBox
                 title="I'm agree"
                 name="agree"
                 value={values.agree}
                 onPress={() => setFieldValue('agree', !values.agree)}
-                containerStyle={{ backgroundColor: '#d3d3d3', borderWidth: 0, padding: 0, margin: 0 }}
+                containerStyle={{ backgroundColor: 'mintcream', borderWidth: 0, padding: 0, margin: 0 }}
                 errorMessage={touched.agree && errors.agree}
               />
 
-              <View style={{ paddingBottom: 30}}>
+              <View style={{ paddingBottom: 30, paddingLeft: 25, paddingRight: 25}}>
                 <FormButton
                   title="SIGN UP"
                   buttonType="outline"
