@@ -13,6 +13,7 @@ import ModalScreen from './Screens/ModalScreen';
 import SignInScreen from './Screens/SignInScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import AuthLoadingScreen from './Screens/AuthLoadingScreen';
+import AnimationTest from './Screens/AnimationTest';
 import TabWelcome from './Screens/TabWelcome';
 import IconWithBadge from './Components/IconWithBadge';
 
@@ -124,20 +125,31 @@ const styles = StyleSheet.create({
   },
 })
 
-const AuthStack = createStackNavigator({
-  SignIn: {
-    screen: SignInScreen,
-    navigationOptions: {
-      header: null,
-    }
+const AuthStack = createStackNavigator(
+  {
+    SignIn: {
+      screen: SignInScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    AnimatedSignIn: {
+      screen: AnimationTest,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    SignUp: {
+      screen: SignUpScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
   },
-  SignUp: {
-    screen: SignUpScreen,
-    navigationOptions: {
-      header: null,
-    }
-  },
-})
+  {
+    initialRouteName: 'AnimatedSignIn'
+  }
+)
 
 const App = createAppContainer(createAnimatedSwitchNavigator(
   {
@@ -146,7 +158,7 @@ const App = createAppContainer(createAnimatedSwitchNavigator(
     AuthLoading: AuthLoadingScreen,
   },
   {
-    initialRouteName: 'AuthLoading',
+    initialRouteName: 'Auth',
     transition: (
       <Transition.Together>
         <Transition.Out
