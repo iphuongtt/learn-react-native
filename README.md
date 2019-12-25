@@ -9,6 +9,9 @@ Step by step to master React Native
 - [Yup](https://github.com/jquense/yup)
 - [React native elements](https://react-native-elements.github.io/react-native-elements/)
 - [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+- [typescript](https://www.typescriptlang.org/)
+- [Animation](https://facebook.github.io/react-native/docs/animations)
+- Eslint + Prettier + Husky + Lint-staged + Config for VsCode
 
 ## Prerequisites
 
@@ -52,3 +55,5 @@ PRs are welcome
 ## Referents
 
 - [A Typescript React Native boilerplate to start your project quickly](https://reactnativeexample.com/a-typescript-react-native-boilerplate-to-start-your-project-quickly/)
+- https://www.youtube.com/watch?v=f7iFp-MEK5k
+- https://cubic-bezier.com/#.17,.67,.83,.67
