@@ -15,9 +15,21 @@ import SignUpScreen from './Screens/SignUpScreen';
 import AuthLoadingScreen from './Screens/AuthLoadingScreen';
 import TabWelcome from './Screens/TabWelcome';
 import IconWithBadge from './Components/IconWithBadge';
+//Animation Screen
+import FadeInView from './Screens/Animations/FadeInView';
 
 const HomeIcon = require('./Assets/Images/home.png');
 const WelcomeIcon = require('./Assets/Images/welcome.png');
+
+//Animation staks
+const AnimationStack = createStackNavigator(
+  {
+    FadeInView: {screen: FadeInView},
+  },
+  {
+    initialRouteName: 'FadeInView',
+  },
+);
 
 const MainStack = createStackNavigator(
   {
@@ -141,9 +153,10 @@ const App = createAppContainer(
       App: DrawerStack,
       Auth: AuthStack,
       AuthLoading: AuthLoadingScreen,
+      Animation: AnimationStack,
     },
     {
-      initialRouteName: 'AuthLoading',
+      initialRouteName: 'Animation',
       transition: (
         <Transition.Together>
           <Transition.Out

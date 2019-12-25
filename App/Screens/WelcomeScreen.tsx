@@ -44,7 +44,9 @@ export default class WelcomeScreen extends React.Component<{
       ),
       headerStyle: {backgroundColor: '#006400'},
       headerTintColor: '#fff',
-      headerTitleStyle: {fontWeight: 'bold'},
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     };
   };
   render() {
