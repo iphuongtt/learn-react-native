@@ -15,6 +15,7 @@ const Movement = () => {
   const [xPosition6] = useState(new Animated.Value(0));
   const [xPosition7] = useState(new Animated.Value(1));
   const [xPosition8] = useState(new Animated.Value(0));
+  const [xPosition9] = useState(new Animated.Value(0));
   useEffect(() => {
     Animated.sequence([
       Animated.timing(xPosition1, {
@@ -35,11 +36,13 @@ const Movement = () => {
       duration: 2000,
     }).start();
 
-    Animated.timing(xPosition4, {
-      toValue: screenWidth - DIAMETER,
-      easing: Easing.sin, // Springy
-      duration: 2000,
-    }).start();
+    Animated.loop(
+      Animated.timing(xPosition4, {
+        toValue: screenWidth - DIAMETER,
+        easing: Easing.sin, // Springy
+        duration: 2000,
+      }),
+    ).start();
 
     Animated.timing(xPosition5, {
       toValue: 3,
@@ -68,6 +71,13 @@ const Movement = () => {
       delay: 5000,
       duration: 500,
     }).start();
+
+    Animated.loop(
+      Animated.timing(xPosition9, {
+        toValue: 360,
+        duration: 1000,
+      }),
+    ).start();
   }, [
     xPosition1,
     xPosition2,
@@ -77,6 +87,7 @@ const Movement = () => {
     xPosition6,
     xPosition7,
     xPosition8,
+    xPosition9,
   ]);
   return (
     <View
@@ -188,6 +199,34 @@ const Movement = () => {
             fontSize: DIAMETER / 5,
           }}>
           bezier
+        </Text>
+      </Animated.View>
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: DIAMETER * 5 + MARGIN_TOP * 6,
+          transform: [
+            {
+              rotate: xPosition9.interpolate({
+                inputRange: [0, 360],
+                outputRange: ['0deg', '1800deg'],
+              }),
+            },
+          ],
+          width: DIAMETER,
+          height: DIAMETER,
+          backgroundColor: 'brown',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: DIAMETER,
+        }}>
+        <Text
+          style={{
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: DIAMETER / 5,
+          }}>
+          rotate
         </Text>
       </Animated.View>
       <Animated.View

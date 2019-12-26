@@ -57,3 +57,7 @@ PRs are welcome
 - [A Typescript React Native boilerplate to start your project quickly](https://reactnativeexample.com/a-typescript-react-native-boilerplate-to-start-your-project-quickly/)
 - https://www.youtube.com/watch?v=f7iFp-MEK5k
 - https://cubic-bezier.com/#.17,.67,.83,.67
+- https://blog.pusher.com/animation-react-native-part-1/
+- https://medium.com/react-native-training/react-native-animations-using-the-animated-api-ebe8e0669fae
+- https://cheesecakelabs.com/blog/first-steps-with-react-native-animations/
+- https://codeburst.io/butter-smooth-animations-in-react-native-93a3b86adf1
