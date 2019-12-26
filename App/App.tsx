@@ -21,6 +21,7 @@ import Movement from './Screens/Animations/Movement';
 import Flix from './Screens/Animations/Flix';
 import AnimatedEvent from './Screens/Animations/Event';
 import AnimatedDecay from './Screens/Animations/Decay';
+import AnimatedCliff from './Screens/Animations/Cliff';
 
 const HomeIcon = require('./Assets/Images/home.png');
 const WelcomeIcon = require('./Assets/Images/welcome.png');
@@ -33,9 +34,10 @@ const AnimationStack = createStackNavigator(
     Flix: {screen: Flix},
     AnimatedEvent: {screen: AnimatedEvent},
     AnimatedDecay: {screen: AnimatedDecay},
+    AnimatedCliff: {screen: AnimatedCliff},
   },
   {
-    initialRouteName: 'AnimatedDecay',
+    initialRouteName: 'AnimatedCliff',
   },
 );
 
