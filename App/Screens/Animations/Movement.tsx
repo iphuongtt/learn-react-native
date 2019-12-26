@@ -14,18 +14,20 @@ const Movement = () => {
   const [xPosition5] = useState(new Animated.Value(1));
   const [xPosition6] = useState(new Animated.Value(0));
   const [xPosition7] = useState(new Animated.Value(1));
-  const [xPosition8] = useState(new Animated.Value(1));
+  const [xPosition8] = useState(new Animated.Value(0));
   useEffect(() => {
-    Animated.timing(xPosition1, {
-      toValue: screenWidth - DIAMETER,
-      easing: Easing.back(2),
-      duration: 2000,
-    }).start();
-    Animated.timing(xPosition2, {
-      toValue: screenWidth - DIAMETER,
-      easing: Easing.bounce, // Like a ball
-      duration: 2000,
-    }).start();
+    Animated.sequence([
+      Animated.timing(xPosition1, {
+        toValue: screenWidth - DIAMETER,
+        easing: Easing.back(2),
+        duration: 2000,
+      }),
+      Animated.timing(xPosition2, {
+        toValue: screenWidth - DIAMETER,
+        easing: Easing.bounce, // Like a ball
+        duration: 2000,
+      }),
+    ]).start();
 
     Animated.timing(xPosition3, {
       toValue: screenWidth - DIAMETER,
@@ -64,9 +66,18 @@ const Movement = () => {
     Animated.timing(xPosition8, {
       toValue: 1,
       delay: 5000,
-      duration: 3000,
+      duration: 500,
     }).start();
-  }, []);
+  }, [
+    xPosition1,
+    xPosition2,
+    xPosition3,
+    xPosition4,
+    xPosition5,
+    xPosition6,
+    xPosition7,
+    xPosition8,
+  ]);
   return (
     <View
       style={{
@@ -231,13 +242,15 @@ const Movement = () => {
           left: xPosition8.interpolate({
             inputRange: [0, 0.2, 0.8, 1],
             outputRange: [0, 180, 120, 300],
-            // outputRange: [
-            //   0,
-            //   (screenWidth - DIAMETER) * 0.2,
-            //   (screenWidth - DIAMETER) * 0.8,
-            //   (screenWidth - DIAMETER) * 1,
-            // ],
           }),
+          transform: [
+            {
+              scale: xPosition8.interpolate({
+                inputRange: [0, 0.2, 0.8, 1],
+                outputRange: [1, 0.6, 1.3, 1],
+              }),
+            },
+          ],
           top: DIAMETER * 5 + MARGIN_TOP * 6,
           width: DIAMETER,
           height: DIAMETER,
