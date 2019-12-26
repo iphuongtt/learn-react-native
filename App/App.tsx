@@ -19,6 +19,8 @@ import IconWithBadge from './Components/IconWithBadge';
 import FadeInView from './Screens/Animations/FadeInView';
 import Movement from './Screens/Animations/Movement';
 import Flix from './Screens/Animations/Flix';
+import AnimatedEvent from './Screens/Animations/Event';
+import AnimatedDecay from './Screens/Animations/Decay';
 
 const HomeIcon = require('./Assets/Images/home.png');
 const WelcomeIcon = require('./Assets/Images/welcome.png');
@@ -29,9 +31,11 @@ const AnimationStack = createStackNavigator(
     FadeInView: {screen: FadeInView},
     Movement: {screen: Movement},
     Flix: {screen: Flix},
+    AnimatedEvent: {screen: AnimatedEvent},
+    AnimatedDecay: {screen: AnimatedDecay},
   },
   {
-    initialRouteName: 'Movement',
+    initialRouteName: 'AnimatedDecay',
   },
 );
 
